@@ -1,0 +1,55 @@
+﻿@model IEnumerable<ADONETCore.Models.Categories>
+
+@{
+    ViewData["Title"] = "Categories";
+}
+<div>
+
+
+
+    <table class="table">
+        <thead>
+
+            <tr>
+                @using (Html.BeginForm("SearchCategory", "Home", FormMethod.Post))
+                {
+                    <p>
+                        Id: <input type="text" name="categoryId" />
+                        <input type="submit" value="Search" class="btn btn-primary" /> |
+                        <input type="submit" formaction="Index" value="Show All" class="btn btn-success" />
+                    </p>
+                }
+
+
+            </tr>
+            <tr>
+                <th>
+                    @Html.DisplayName("Name")
+                </th>
+                <th>
+                    @Html.DisplayName("DisplayOrder")
+                </th>
+    
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DisplayOrder)
+                    </td>
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
